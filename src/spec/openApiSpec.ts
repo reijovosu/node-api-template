@@ -5,6 +5,9 @@ const log = require('debug-level').log('app:src:spec');
 
 const debug = new TDebug('app:src:spec');
 
+const serverPort = process.env.PORT || 8001;
+const serverAddr = process.env.SERVER_ADDR || 'http://localhost';
+
 const options = {
     definition: {
         openapi: '3.0.3',
@@ -13,7 +16,7 @@ const options = {
             version: '1.0.0',
         },
         servers: [{
-            url: 'http://localhost:8001/api/v1',
+            url: `${serverAddr}:${serverPort}`,
             description: 'Local Env Server'
         }]
     },
